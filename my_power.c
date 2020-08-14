@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+// 빠른 제곱 계산
+// 시간복잡도: O(logN)
 double recursive_power(double x, int n)
 {
     if (n == 0)
