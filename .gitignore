@@ -1,4 +1,5 @@
 **/*
 !*.c
 !*.gitignore
+!ch*
 tempCodeRunnerFile.c
