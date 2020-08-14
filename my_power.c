@@ -19,6 +19,8 @@ double recursive_power(double x, int n)
     }
 }
 
+// 반복 제곱 계산
+// 시간 복잡도: O(N)
 double iterative_power(double x, int n)
 {
     double result = 1;
