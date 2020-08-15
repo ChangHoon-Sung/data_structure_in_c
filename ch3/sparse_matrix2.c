@@ -40,6 +40,7 @@ SparseMatrix matrix_transpose2(SparseMatrix a)
 
     // 전치행렬을 정렬하기 위해 열의 값이 0인 행부터 이동
     for (int c = 0; c < a.cols; c++)
+    {
         for (int i = 0; i < a.terms; i++)
         {
             if (a.data[i].col == c)
@@ -50,7 +51,7 @@ SparseMatrix matrix_transpose2(SparseMatrix a)
                 bindex++;
             }
         }
-
+    }
     return b;
 }
 
