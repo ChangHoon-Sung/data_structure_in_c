@@ -2,38 +2,38 @@
 
 #define ROWS 3
 #define COLS 3
-int matrix[3][3] = {{2, 3, 0}, {8, 9, 1}, {7, 0, 5}};
 
-void print_matrix()
+void print_matrix(int a[ROWS][COLS])
 {
+    printf("-----\n");
     for (int i = 0; i < ROWS; i++)
     {
         for (int j = 0; j < COLS; j++)
         {
-            printf("%d ", matrix[i][j]);
+            printf("%d ", a[i][j]);
         }
         printf("\n");
     }
+    printf("-----\n");
 }
 
-void matrix_transpose()
+void matrix_transpose(int a[ROWS][COLS], int b[ROWS][COLS])
 {
-    int tmp;
     for (int i = 0; i < 3; i++)
     {
-        for (int j = 0; j < i; j++)
+        for (int j = 0; j < 3; j++)
         {
-            tmp = matrix[i][j];
-            matrix[i][j] = matrix[j][i];
-            matrix[j][i] = tmp;
+            b[j][i] = a[i][j];
         }
-        printf("\n");
     }
 }
 
 int main(void)
 {
-    print_matrix();
-    matrix_transpose();
-    print_matrix();
+    int matrix_a[ROWS][COLS] = {{2, 3, 0}, {8, 9, 1}, {7, 0, 5}};
+    int matrix_b[ROWS][COLS];
+
+    print_matrix(matrix_a);
+    matrix_transpose(matrix_a, matrix_b);
+    print_matrix(matrix_b);
 }
