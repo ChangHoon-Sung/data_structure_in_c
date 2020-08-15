@@ -17,6 +17,8 @@ void print_matrix(int a[ROWS][COLS])
     printf("-----\n");
 }
 
+// A의 전치행렬 B 구하기
+// 행과 열의 인덱스를 반대로 저장하면 된다.
 void matrix_transpose(int a[ROWS][COLS], int b[ROWS][COLS])
 {
     for (int i = 0; i < 3; i++)
@@ -30,6 +32,8 @@ void matrix_transpose(int a[ROWS][COLS], int b[ROWS][COLS])
 
 int main(void)
 {
+    // 단순 이중 배열로 구현한 행렬
+    // 구조는 단순하지만 희소행렬을 다룰 때 공간 낭비가 심하다.
     int matrix_a[ROWS][COLS] = {{2, 3, 0}, {8, 9, 1}, {7, 0, 5}};
     int matrix_b[ROWS][COLS];
 
