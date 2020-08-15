@@ -11,7 +11,7 @@ typedef struct
 } element;
 
 // 새로운 행렬 구조체
-// 단순 이중 배열보다는 복잡하지만 공간
+// 단순 이중 배열보다는 복잡하지만 공간 효율이 높음
 typedef struct
 {
     element data[MAX_TERMS];
