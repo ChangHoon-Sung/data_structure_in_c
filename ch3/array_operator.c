@@ -49,5 +49,7 @@ int main(void)
     delete (arr, -1, loc);
     print_array(arr);
 
+    free(arr);
+
     return 0;
 }
