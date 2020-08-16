@@ -10,9 +10,6 @@ typedef struct {
     int top;
 } StackType;
 
-// 스택 전역변수 선언
-StackType brackets;
-
 void init_stack(StackType *s) {
     s->top = -1;
 }
