@@ -8,7 +8,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define MAX_ELEMENT_SIZE 1000001
+#define MAX_ELEMENT_SIZE 1000000
 
 /* 스택 정의 시작 */
 typedef char element;
