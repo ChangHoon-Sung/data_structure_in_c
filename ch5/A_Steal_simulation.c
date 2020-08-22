@@ -5,6 +5,7 @@
 #define NUMBER_OF_WORKER 3
 #define BUSINESS_TIME 50
 #define MAX_ELEMENT_SIZE 100
+#define MAX_TASK_TIME 5
 
 typedef struct {
     int id;
@@ -115,10 +116,11 @@ int main(void) {
     // 즉, 할당받거나 빼앗은 작업은 그 다음 작업 시간부터 '작업하기'를 수행할 수 있다.
     for (int clock = 0; clock < BUSINESS_TIME; clock++) {
         printf("\n작업 시간 %d\n", clock);
-        // 일은 시간당 50% 확률로 무작위 워커에게 들어온다. 수행시간이 5시간 이하인 작업이 할당된다.
+
+        // 일은 시간당 50% 확률로 무작위 워커에게 들어온다. 수행시간이 MAX_TASK_TIME 이하인 작업이 할당된다.
         if (!(rand() % 2)) {
             selected = rand() % NUMBER_OF_WORKER;
-            new_task.id = task_id++, new_task.todo_time = (rand() % 4) + 1;
+            new_task.id = task_id++, new_task.todo_time = (rand() % MAX_TASK_TIME) + 1;
             add_rear(&Worker[selected], new_task);
             printf("일꾼 %d이(가) %d시간짜리 작업 %d를 할당받았습니다.\n", selected, new_task.todo_time, new_task.id);
         }
