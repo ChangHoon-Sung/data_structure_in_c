@@ -1,3 +1,18 @@
+// BOJ 17225 세훈이의 선물가게
+// Assign: ChangHoon Sung
+//
+// INPUT
+// A, B, N: 파랑과 빨강 포장 속도(0 <= A, B <= 300), 손님 수(1 <= N <= 1,000)
+// t, c, m: 주문 시각(1 <= t <= 86,400), 포장지 색(c == 'B' | 'R'), 선물의 갯수(1 <= m <= 100)
+
+/*
+TRY #1 (부분 성공) - 온 순서대로 바로바로 처리
+여기까진 쉽다. 더 깔끔하게 짜보자.
+
+TRY #2 (실패) - 우선순위 큐?
+배우고 나서 재도전!
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -38,7 +53,7 @@ void enqueue(Queue *q, element e) {
     if (is_full(q)) {
         error("큐 포화 에러");
     }
-    q->rear = (++q->rear) % MAX_ELEMENT_SIZE;
+    q->rear = (q->rear + 1) % MAX_ELEMENT_SIZE;
     q->data[q->rear] = e;
 }
 
