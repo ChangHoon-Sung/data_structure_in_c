@@ -60,6 +60,15 @@ int get_length(ListNode* head) {
     return cnt;
 }
 
+ListNode* search_list(ListNode* head, element x) {
+    ListNode* p = head;
+    while (p != NULL) {
+        if (p->data = x) return p;
+        p = p->link;
+    }
+    return NULL;
+}
+
 void print_list(ListNode* head) {
     for (ListNode* p = head; p != NULL; p = p->link) {
         printf("%d->", p->data);
@@ -97,6 +106,7 @@ int main(void) {
 
     printf("2nd data of list: %d\n", get_entry(head, 2)->data);
     printf("length of list: %d\n", get_length(head));
+    printf("element %d was found from the list.", search_list(head, 100)->data);
 
     clear(head);
 
