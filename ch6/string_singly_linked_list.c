@@ -83,22 +83,25 @@ int main(void) {
     ListNode* head = NULL;
     element data;
 
-    strcpy(data.name, "APPLE");  // 문자열을 다루는 경우 반드시 함수로 안전하게 복사하는 것을 잊지 말자.
+    // 문자열을 다루는 경우 반드시 함수를 사용하자.
+    // 문자열 복사 함수는 다양하게 있으나, 보안상 안전한 복사를 위해서 아래를 기억하자.
+    // strcpy < strncpy < snprintf < strlcpy(ISO 표준 아님, BSD의 glib/string.h에 있음.)
+    snprintf(data.name, sizeof(data.name), "%s", "APPLE");
     head = insert_first(head, data);
 
-    strcpy(data.name, "BANANA");
-    head = insert_first(head, data);
-    print_list(head);
-
-    strcpy(data.name, "CHARLIE");
-    head = insert_first(head, data);
-    print_list(head);
-
-    strcpy(data.name, "DAGGER");
+    snprintf(data.name, sizeof(data.name), "%s", "BANANA");
     head = insert_first(head, data);
     print_list(head);
 
-    strcpy(data.name, "TOMATO");
+    snprintf(data.name, sizeof(data.name), "%s", "CHARLIE");
+    head = insert_first(head, data);
+    print_list(head);
+
+    snprintf(data.name, sizeof(data.name), "%s", "DAGGER");
+    head = insert_first(head, data);
+    print_list(head);
+
+    snprintf(data.name, sizeof(data.name), "%s", "TOMATO");
     head = insert(head, head->link, data);
     print_list(head);
 
