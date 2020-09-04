@@ -69,6 +69,18 @@ ListNode* search_list(ListNode* head, element x) {
     return NULL;
 }
 
+ListNode* concatenate_list(ListNode* head1, ListNode* head2) {
+    ListNode* p = head1;
+    if (head1 == NULL)
+        return head2;
+    else if (head2 == NULL)
+        return head1;
+
+    while (p->link != NULL) p = p->link;
+    p->link = head2;
+    return head1;
+}
+
 void print_list(ListNode* head) {
     for (ListNode* p = head; p != NULL; p = p->link) {
         printf("%d->", p->data);
@@ -106,9 +118,20 @@ int main(void) {
 
     printf("2nd data of list: %d\n", get_entry(head, 2)->data);
     printf("length of list: %d\n", get_length(head));
-    printf("element %d was found from the list.", search_list(head, 100)->data);
+    printf("element %d was found from the list.\n\n", search_list(head, 100)->data);
+
+    ListNode* head2;
+    head2 = insert_first(head2, 30);
+    head2 = insert_first(head2, 20);
+    head2 = insert_first(head2, 10);
+    printf("list2: ");
+    print_list(head2);
+
+    head = concatenate_list(head, head2);
+    print_list(head);
 
     clear(head);
+    clear(head2);
 
     return 0;
 }
