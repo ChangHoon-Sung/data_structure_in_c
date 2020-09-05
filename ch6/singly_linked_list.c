@@ -81,6 +81,21 @@ ListNode* concatenate_list(ListNode* head1, ListNode* head2) {
     return head1;
 }
 
+ListNode* reverse_list(ListNode* head) {
+    ListNode *p, *q, *r = NULL;  // p: 바꿀 리스트의 헤드, q: 바꿀 노드, r: 뒤집힌 리스트의 헤드
+    p = head;
+
+    while (p != NULL) {
+        q = p;        // 바꿀 리스트의 헤드가 바꿀 노드가 된다.
+        p = p->link;  // 바꿀 리스트의 헤드는 그 다음 노드를 가리킨다.
+
+        q->link = r;  // 바꿀 노드는 바뀐 리스트의 헤드를 가리킨다.
+        r = q;        // 바뀐 리스트의 헤드를 변경한다.
+    }
+
+    return r;
+}
+
 void print_list(ListNode* head) {
     for (ListNode* p = head; p != NULL; p = p->link) {
         printf("%d->", p->data);
