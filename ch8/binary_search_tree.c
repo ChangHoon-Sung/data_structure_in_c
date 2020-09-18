@@ -75,7 +75,7 @@ TreeNode *delete_node(TreeNode *node, int key) {
             free(node);
             return temp;
         } else if (!node->right) {
-            temp = node->right;
+            temp = node->left;
             free(node);
             return temp;
         }
