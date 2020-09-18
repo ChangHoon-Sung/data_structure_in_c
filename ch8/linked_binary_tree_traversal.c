@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+#define max(x, y) (((x) >= (y)) ? (x) : (y))
+
 typedef struct TreeNode {
     int data;
     struct TreeNode* left;
@@ -33,12 +35,39 @@ void postorder(TreeNode* root) {
     return;
 }
 
+int get_node_count(TreeNode* node) {
+    if (node) return 1 + get_node_count(node->left) + get_node_count(node->right);
+}
+
+int get_leafnode_count(TreeNode* node) {
+    if (node) {
+        if (!node->left && !node->right)
+            return 1;
+        else
+            return get_leafnode_count(node->left) + get_leafnode_count(node->right);
+    }
+}
+
+int get_internal_node_count(TreeNode* node) {
+    if (!node || (!node->left && !node->right))
+        return 0;
+    else
+        return 1 + get_leafnode_count(node->left) + get_leafnode_count(node->right);
+}
+
+int get_height(TreeNode* node) {
+    if (node)
+        return 1 + max(get_height(node->left), get_height(node->right));
+}
+
 int main(void) {
-    TreeNode n5 = {5, NULL, NULL};
-    TreeNode n4 = {4, NULL, NULL};
-    TreeNode n3 = {3, NULL, NULL};
-    TreeNode n2 = {2, &n4, &n5};
-    TreeNode n1 = {1, &n2, &n3};
+    TreeNode n10 = {22, NULL, NULL};
+    TreeNode n7 = {95, NULL, NULL};
+    TreeNode n6 = {35, &n10, NULL};
+    TreeNode n4 = {5, NULL, NULL};
+    TreeNode n3 = {93, &n6, &n7};
+    TreeNode n2 = {15, &n4, NULL};
+    TreeNode n1 = {17, &n2, &n3};
 
     TreeNode* root = &n1;
 
@@ -54,5 +83,10 @@ int main(void) {
     postorder(root);
     printf("\n");
 
+    printf("count of node: %d\n", get_node_count(root));
+    printf("count of leafnode: %d\n", get_leafnode_count(root));
+    printf("count of internal_node: %d\n", get_internal_node_count(root));
+
+    printf("height of node: %d\n", get_height(root));
     return 0;
 }
