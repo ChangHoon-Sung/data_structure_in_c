@@ -81,14 +81,8 @@ TreeNode *delete_node(TreeNode *node, int key) {
         }
 
         temp = min_value_node(node->right);
-        if (!temp->left && temp->right) {
-            temp->left = node->left;
-            free(node);
-            node = temp;
-        } else {
-            node->key = temp->key;
-            delete_node(node->right, temp->key);
-        }
+        node->key = temp->key;
+        node->right = delete_node(node->right, temp->key);
     }
 
     return node;
