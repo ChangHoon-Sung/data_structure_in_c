@@ -120,6 +120,11 @@ int isBalanced(TreeNode *root) {
     }
 }
 
+int sum(TreeNode *node) {
+    if (!node) return 0;
+    return node->key + sum(node->left) + sum(node->right);
+}
+
 int main(void) {
     int input[20] = {35, 18, 68, 7, 26, 99, 3, 12, 22, 30, 67, 100};
     TreeNode *root = NULL;
@@ -133,6 +138,12 @@ int main(void) {
         printf("This tree is balanced.\n");
     else
         printf("This tree isn't balanced.\n");
+
+    int total = 0;
+    for (int i = 0; i < 20; i++)
+        total += input[i];
+
+    printf("Sum of keys: %d\n", sum(root));
 
     inorder_traversal(root);
     printf("\n");
