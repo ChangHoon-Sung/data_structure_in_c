@@ -97,13 +97,42 @@ void inorder_traversal(TreeNode *node) {
     }
 }
 
+int max(int n1, int n2) { return (n1 >= n2) ? n1 : n2; }
+
+int get_height(TreeNode *root) {
+    if (!root) return 0;
+    return 1 + max(get_height(root->left), get_height(root->right));
+}
+
+int isBalanced(TreeNode *root) {
+    int result, lh, rh;
+
+    if (!root) return 1;
+
+    lh = get_height(root->left);
+    rh = get_height(root->right);
+    printf("data: %d, left-tree's height: %d, right-tree's height: %d, gap: %d\n", root->key, lh, rh, abs(lh - rh));
+
+    if (abs(lh - rh) <= 1) {
+        return isBalanced(root->left) && isBalanced(root->right);
+    } else {
+        return 0;
+    }
+}
+
 int main(void) {
-    int input[10] = {35, 18, 68, 7, 26, 99, 3, 12, 22, 30};
+    int input[20] = {35, 18, 68, 7, 26, 99, 3, 12, 22, 30, 67, 100};
     TreeNode *root = NULL;
 
-    for (int i = 0; i < 10; i++) {
-        root = insert(root, input[i]);
+    for (int i = 0; i < 20; i++) {
+        if (input[i])
+            root = insert(root, input[i]);
     }
+
+    if (isBalanced(root))
+        printf("This tree is balanced.\n");
+    else
+        printf("This tree isn't balanced.\n");
 
     inorder_traversal(root);
     printf("\n");
