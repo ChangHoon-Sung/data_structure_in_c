@@ -51,7 +51,7 @@ element delete_min_heap(Heap *h) {
     while (child <= h->heap_size) {
         if (child < h->heap_size && h->heap[child].key > h->heap[child + 1].key)
             child++;
-        if (h->heap[parent].key < h->heap[child].key)
+        if (temp.key < h->heap[child].key)
             break;
         h->heap[parent] = h->heap[child];
         parent = child;
