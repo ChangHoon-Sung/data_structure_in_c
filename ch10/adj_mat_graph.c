@@ -13,6 +13,7 @@ typedef struct GraphType {
 
 void init_graph(GraphType *g) {
     memset(g->adj_mat, 0, sizeof(g->adj_mat));
+    g->n = 0;
 }
 
 void insert_vertex(GraphType *g, int v) {
