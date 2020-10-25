@@ -26,7 +26,7 @@ int main(void) {
     }
     printf("\n\n");
 
-    printf("insertion");
+    printf("selection");
     if (TEST_TYPE == 2) start = clock();
     selection_sort(array, N);
     if (TEST_TYPE == 2) {
