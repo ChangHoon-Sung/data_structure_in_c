@@ -4,8 +4,8 @@
 #include "../include/sort.h"
 #include "../include/tools.h"
 
-#define N 10000
-#define NUMBER_DEBUG 0
+#define N 40
+#define TEST_TYPE 1  // 1: 출력 비교, 2: 성능 비교
 
 int main(void) {
     clock_t start, end;
@@ -14,27 +14,36 @@ int main(void) {
 
     printf("Variable Sort Comparison\n\n");
 
-    printf("unsorted:");
-    if (NUMBER_DEBUG)
+    // unsorted
+    if (TEST_TYPE == 2) {
+        printf("원소 %d개의 정렬 성능을 비교합니다..", N);
+    } else if (TEST_TYPE == 1 && N < 50) {
+        printf("unsorted:");
         print_arrary(array, N);
-    else
-        printf(" generated!");
+    } else {
+        printf("원소의 수를 50 미만으로 줄여주세요. (현재: %d)\n", N);
+        exit(1);
+    }
     printf("\n\n");
 
     printf("insertion");
-    start = clock();
+    if (TEST_TYPE == 2) start = clock();
     selection_sort(array, N);
-    end = clock();
-    printf(" takes %lf seconds.\t", (double)(end - start) / CLOCKS_PER_SEC);
-    if (NUMBER_DEBUG) print_arrary(array, N);
+    if (TEST_TYPE == 2) {
+        end = clock();
+        printf(" takes %lf seconds.\t", (double)(end - start) / CLOCKS_PER_SEC);
+    }
+    if (TEST_TYPE == 1) print_arrary(array, N);
     printf("\n");
 
     printf("quicksort");
-    start = clock();
+    if (TEST_TYPE == 2) start = clock();
     quick_sort(comparison, N, sizeof(int), compare);
-    end = clock();
-    printf(" takes %lf seconds.\t", (double)(end - start) / CLOCKS_PER_SEC);
-    if (NUMBER_DEBUG) print_arrary(comparison, N);
+    if (TEST_TYPE == 2) {
+        end = clock();
+        printf(" takes %lf seconds.\t", (double)(end - start) / CLOCKS_PER_SEC);
+    }
+    if (TEST_TYPE == 1) print_arrary(comparison, N);
     printf("\n");
 
     return 0;
