@@ -8,6 +8,7 @@ void selection_sort(int *arr, int len) {
                 min_idx = j;
             }
         }
+        if (i != min_idx) {
         tmp = arr[min_idx];
         arr[min_idx] = arr[i];
         arr[i] = tmp;
