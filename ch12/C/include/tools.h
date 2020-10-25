@@ -5,7 +5,7 @@ int compare(const void *a, const void *b);
 
 int *random_array(int n);
 
-void print_arrary(int *arr, int len);
+void print_array(int *arr, int len);
 
 int *copy_array(int *arr, int len);
 

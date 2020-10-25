@@ -43,7 +43,7 @@ int main(void) {
         end = clock();
         printf(" takes %lf seconds.\t", (double)(end - start) / CLOCKS_PER_SEC);
     }
-    if (TEST_TYPE == 1) print_arrary(comparison, N);
+    if (TEST_TYPE == 1) print_array(comparison, N);
     printf("\n");
 
     return 0;

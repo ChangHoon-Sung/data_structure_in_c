@@ -16,7 +16,7 @@ int *random_array(int len) {
     return arr;
 }
 
-void print_arrary(int *arr, int len, int perf_time) {
+void print_array(int *arr, int len, int perf_time) {
     printf("\t");
     for (int i = 0; i < len; i++) {
         printf("%d ", arr[i]);
