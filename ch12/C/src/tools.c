@@ -11,7 +11,7 @@ int *random_array(int len) {
     srand(time(NULL));
     int *arr = (int *)malloc(sizeof(int) * len);
     for (int i = 0; i < len; i++) {
-        arr[i] = random() % 100;
+        arr[i] = random() % len;
     }
     return arr;
 }
