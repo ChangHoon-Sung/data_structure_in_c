@@ -1,3 +1,10 @@
+void swap(int *a, int *b) {
+    int temp;
+    temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
 void selection_sort(int arr[], int len) {
     int min_idx, tmp;
 
@@ -9,9 +16,7 @@ void selection_sort(int arr[], int len) {
             }
         }
         if (i != min_idx) {
-            tmp = arr[min_idx];
-            arr[min_idx] = arr[i];
-            arr[i] = tmp;
+            swap(&arr[min_idx], &arr[i]);
         }
     }
 }
@@ -33,9 +38,7 @@ void bubble_sort(int arr[], int len) {
     for (int i = len - 1; i > 0; i--) {
         for (int j = 0; j < i; j++) {
             if (arr[j] > arr[j + 1]) {
-                temp = arr[j];
-                arr[j] = arr[j + 1];
-                arr[j + 1] = temp;
+                swap(&arr[j], &arr[j + 1]);
             }
         }
     }
