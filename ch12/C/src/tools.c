@@ -21,6 +21,7 @@ void print_array(int *arr, int len, int perf_time) {
     for (int i = 0; i < len; i++) {
         printf("%d ", arr[i]);
     }
+    printf("\n");
 }
 
 int *copy_array(int *arr, int len) {
