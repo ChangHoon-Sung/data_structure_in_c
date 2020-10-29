@@ -11,6 +11,7 @@ int main(void) {
     clock_t start, end;
     int *array = random_array(N);
     int *array1 = copy_array(array, N);
+    int *array2 = copy_array(array, N);
     int *comparison = copy_array(array, N);
 
     printf("Variable Sort Comparison\n\n");
@@ -26,6 +27,15 @@ int main(void) {
         exit(1);
     }
     printf("\n");
+
+    printf("built-in sort");
+    if (TEST_TYPE == 2) start = clock();
+    quick_sort(comparison, N, sizeof(int), compare);
+    if (TEST_TYPE == 2) {
+        end = clock();
+        printf(" takes %lf seconds.\n", (double)(end - start) / CLOCKS_PER_SEC);
+    }
+    if (TEST_TYPE == 1) print_array(comparison, N);
 
     printf("selection");
     if (TEST_TYPE == 2) start = clock();
@@ -45,15 +55,14 @@ int main(void) {
     }
     if (TEST_TYPE == 1) print_array(array1, N);
 
-    printf("quicksort");
+    printf("bubble\t");
     if (TEST_TYPE == 2) start = clock();
-    quick_sort(comparison, N, sizeof(int), compare);
+    bubble_sort(array2, N);
     if (TEST_TYPE == 2) {
         end = clock();
-        printf(" takes %lf seconds.\t", (double)(end - start) / CLOCKS_PER_SEC);
+        printf(" takes %lf seconds.\n", (double)(end - start) / CLOCKS_PER_SEC);
     }
-    if (TEST_TYPE == 1) print_array(comparison, N);
-    printf("\n");
+    if (TEST_TYPE == 1) print_array(array2, N);
 
     return 0;
 }
