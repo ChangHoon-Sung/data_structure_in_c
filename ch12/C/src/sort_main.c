@@ -12,6 +12,7 @@ int main(void) {
     int *array = random_array(N);
     int *array1 = copy_array(array, N);
     int *array2 = copy_array(array, N);
+    int *array3 = copy_array(array, N);
     int *comparison = copy_array(array, N);
 
     printf("Variable Sort Comparison\n\n");
@@ -63,6 +64,15 @@ int main(void) {
         printf(" takes %lf seconds.\n", (double)(end - start) / CLOCKS_PER_SEC);
     }
     if (TEST_TYPE == 1) print_array(array2, N);
+
+    printf("shell\t");
+    if (TEST_TYPE == 2) start = clock();
+    shell_sort(array3, N);
+    if (TEST_TYPE == 2) {
+        end = clock();
+        printf(" takes %lf seconds.\n", (double)(end - start) / CLOCKS_PER_SEC);
+    }
+    if (TEST_TYPE == 1) print_array(array3, N);
 
     return 0;
 }

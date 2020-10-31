@@ -43,3 +43,23 @@ void bubble_sort(int arr[], int len) {
         }
     }
 }
+
+void inc_insertion_sort(int arr[], int first, int last, int gap) {
+    int key, j;
+    for (int i = first + gap; i <= last; i += gap) {
+        key = arr[i];
+        for (j = i - gap; j >= first && key < arr[j]; j -= gap) {
+            arr[j + gap] = arr[j];
+        }
+        arr[j + gap] = key;
+    }
+}
+
+void shell_sort(int arr[], int len) {
+    for (int gap = len / 2; gap > 0; gap /= 2) {
+        if (gap % 2 == 0) gap++;
+        for (int i = 0; i < gap; i++) {
+            inc_insertion_sort(arr, i, len - 1, gap);
+        }
+    }
+}
