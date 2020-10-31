@@ -1,4 +1,3 @@
-#include <stdlib.h>
 int temp[100000];
 
 void swap(int *a, int *b) {
