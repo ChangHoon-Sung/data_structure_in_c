@@ -13,6 +13,7 @@ int main(void) {
     int *array1 = copy_array(array, N);
     int *array2 = copy_array(array, N);
     int *array3 = copy_array(array, N);
+    int *array4 = copy_array(array, N);
     int *comparison = copy_array(array, N);
 
     printf("Variable Sort Comparison\n\n");
@@ -73,6 +74,15 @@ int main(void) {
         printf(" takes %lf seconds.\n", (double)(end - start) / CLOCKS_PER_SEC);
     }
     if (TEST_TYPE == 1) print_array(array3, N);
+
+    printf("merge\t");
+    if (TEST_TYPE == 2) start = clock();
+    merge_sort(array4, 0, N - 1);
+    if (TEST_TYPE == 2) {
+        end = clock();
+        printf(" takes %lf seconds.\n", (double)(end - start) / CLOCKS_PER_SEC);
+    }
+    if (TEST_TYPE == 1) print_array(array4, N);
 
     return 0;
 }
