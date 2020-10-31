@@ -103,3 +103,37 @@ void merge_sort(int arr[], int left, int right) {
         merge(arr, left, mid, right);
     }
 }
+
+int partition(int arr[], int left, int right) {
+    int low, high;
+    int temp, pivot;
+
+    low = left - 1;
+    high = right + 1;
+    pivot = arr[(left + right) / 2];
+
+    do {
+        do {
+            low++;
+        } while (arr[low] < pivot);
+        do {
+            high--;
+        } while (arr[high] > pivot);
+
+        if (low >= high) {
+            return high;
+        }
+
+        temp = arr[low];
+        arr[low] = arr[high];
+        arr[high] = temp;
+    } while (1);
+}
+
+void quick_sort(int arr[], int left, int right) {
+    if (left < right) {
+        int q = partition(arr, left, right);
+        quick_sort(arr, left, q);
+        quick_sort(arr, q + 1, right);
+    }
+}

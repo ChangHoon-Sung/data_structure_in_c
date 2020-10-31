@@ -14,6 +14,7 @@ int main(void) {
     int *array2 = copy_array(array, N);
     int *array3 = copy_array(array, N);
     int *array4 = copy_array(array, N);
+    int *array5 = copy_array(array, N);
     int *comparison = copy_array(array, N);
 
     printf("Variable Sort Comparison\n\n");
@@ -32,7 +33,7 @@ int main(void) {
 
     printf("built-in sort");
     if (TEST_TYPE == 2) start = clock();
-    quick_sort(comparison, N, sizeof(int), compare);
+    built_in_quick_sort(comparison, N, sizeof(int), compare);
     if (TEST_TYPE == 2) {
         end = clock();
         printf(" takes %lf seconds.\n", (double)(end - start) / CLOCKS_PER_SEC);
@@ -83,6 +84,15 @@ int main(void) {
         printf(" takes %lf seconds.\n", (double)(end - start) / CLOCKS_PER_SEC);
     }
     if (TEST_TYPE == 1) print_array(array4, N);
+
+    printf("quick\t");
+    if (TEST_TYPE == 2) start = clock();
+    quick_sort(array5, 0, N - 1);
+    if (TEST_TYPE == 2) {
+        end = clock();
+        printf(" takes %lf seconds.\n", (double)(end - start) / CLOCKS_PER_SEC);
+    }
+    if (TEST_TYPE == 1) print_array(array5, N);
 
     return 0;
 }
